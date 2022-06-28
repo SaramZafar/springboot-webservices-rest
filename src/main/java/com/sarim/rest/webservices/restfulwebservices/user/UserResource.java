@@ -35,13 +35,14 @@ public class UserResource {
         User savedUser = userDaoService.save(user);
 
 
-    //TO return the saved user URI back to the client
+    //TO return the saved user(Created response) URI back to the client
+        //1: creating URI
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId()).toUri();
 
-       return ResponseEntity.created(location).build();
+       return ResponseEntity.created(location).build();//created status code
 
     }
 
