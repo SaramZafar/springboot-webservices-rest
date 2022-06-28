@@ -15,7 +15,11 @@ public class UserResource {
 
     @GetMapping("/users")
     public List<User> retrieveAllUsers(){
-        return userDaoService.findAll();
+         List<User> users = userDaoService.findAll();
+         if(users.isEmpty()){
+             throw new UserNotFoundException("No user found");
+         }
+         return users;
 
     }
     @GetMapping("users/{id}")
@@ -45,5 +49,20 @@ public class UserResource {
        return ResponseEntity.created(location).build();//created status code
 
     }
+
+    @DeleteMapping("users/{id}")
+    public void deleteUser(@PathVariable int id){
+        User user = userDaoService.deleteById(id);
+
+        if(user == null){
+            throw new UserNotFoundException("id-"+id);
+        }
+
+
+    }
+
+
+
+
 
 }
