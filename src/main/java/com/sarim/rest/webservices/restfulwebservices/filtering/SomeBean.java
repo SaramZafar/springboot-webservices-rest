@@ -1,10 +1,12 @@
 package com.sarim.rest.webservices.restfulwebservices.filtering;
 
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //@JsonIgnoreProperties(value= {"field1"})    //Another way of filtering attributes - hard coded not recommended
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
 
 
@@ -13,7 +15,7 @@ public class SomeBean {
     //@JsonIgnore //To ignore this field to be sent back to as a part of response to client
     private String field2;
 
-    @JsonIgnore //@JsonIgnore //To ignore this field to be sent back to as a part of response to client
+    //@JsonIgnore //@JsonIgnore //To ignore this field to be sent back to as a part of response to client
     private String field3;
 
     public SomeBean() {
