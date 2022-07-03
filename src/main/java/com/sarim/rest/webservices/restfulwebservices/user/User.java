@@ -1,12 +1,20 @@
 package com.sarim.rest.webservices.restfulwebservices.user;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
-
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer Id;
+
+    public User() {
+    }
 
     @Size(min = 3, message = "Name should have at least two characters")
     private String name;
